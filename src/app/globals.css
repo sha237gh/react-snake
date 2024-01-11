@@ -1,0 +1,74 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 214, 219, 220;
+  --background-end-rgb: 255, 255, 255;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --foreground-rgb: 255, 255, 255;
+    --background-start-rgb: 0, 0, 0;
+    --background-end-rgb: 0, 0, 0;
+  }
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+  background: linear-gradient(
+      to bottom,
+      transparent,
+      rgb(var(--background-end-rgb))
+    )
+    rgb(var(--background-start-rgb));
+}
+
+.snake-game {
+  display: grid;
+  grid-template-columns: repeat(10, 56px);
+  grid-template-rows: repeat(10, 56px);
+  border: 1px solid;
+  margin: 0 auto;
+  width: 560px;
+}
+
+.snake, .head {
+  background-color: red;
+}
+
+/* .snake {
+  &.left,
+  &.right {
+    background: url(/snake-body.png) no-repeat center center;
+  }
+  &.down,
+  &.up {
+    background: url(/snake-body-vertical.png) no-repeat center center;
+  }
+  &.turn-down-right {
+    background: url(/turn-down-right.png) no-repeat center center;
+  }
+  &.turn-down-left {
+    background: url(/turn-down-left.png) no-repeat center center;
+  }
+  &.turn-up-right {
+    background: url(/turn-up-right.png) no-repeat center center;
+  }
+  &.turn-up-left {
+    background: url(/turn-up-left.png) no-repeat center center;
+  }
+  &.head {
+    background: url(/snake-head.png) no-repeat center center;
+  }
+} */
+
+.head {
+  background-color: red;
+}
+
+.food {
+  background-color: green;
+}

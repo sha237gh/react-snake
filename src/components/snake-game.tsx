@@ -21,21 +21,24 @@ const SnakeGame = () => {
     { row: 0, col: 1, direction: "RIGHT" },
     { row: 0, col: 0, direction: "RIGHT" },
   ]);
-  const generateRandomPosition = useCallback((snake: SnakeSegment[] | Position[]) => {
-    let newPos: Position;
-    do {
-      newPos = {
-        row: Math.floor(Math.random() * ROWS),
-        col: Math.floor(Math.random() * COLS),
-      };
-    } while (
-      snake.some(
-        (segment) => segment.row === newPos.row && segment.col === newPos.col
-      )
-    );
+  const generateRandomPosition = useCallback(
+    (snake: SnakeSegment[] | Position[]) => {
+      let newPos: Position;
+      do {
+        newPos = {
+          row: Math.floor(Math.random() * ROWS),
+          col: Math.floor(Math.random() * COLS),
+        };
+      } while (
+        snake.some(
+          (segment) => segment.row === newPos.row && segment.col === newPos.col
+        )
+      );
 
-    return newPos;
-  }, []);
+      return newPos;
+    },
+    []
+  );
   const [food, setFood] = useState(generateRandomPosition(snake));
   const [direction, setDirection] = useState("RIGHT");
 
@@ -93,7 +96,7 @@ const SnakeGame = () => {
 
       return newSnake.length > 0 ? newSnake : prevSnake;
     });
-  }, [direction, food.col, food.row, generateRandomPosition]);
+  }, [direction, food, generateRandomPosition]);
 
   useEffect(() => {
     const gameInterval = setInterval(() => {
@@ -213,7 +216,7 @@ const SnakeGame = () => {
     return ""; // Default case
   };
 
-  return <div className="snake-game">{renderGrid()}</div>;
+  return <div className='snake-game'>{renderGrid()}</div>;
 };
 
 export default SnakeGame;
